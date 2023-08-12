@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { inventoryData } from "../../inventory";
 import "./ProductList.css";
 import { InventoryContext } from "../../context/Inventory";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const handleFilter = (value, list) => {
   if (value === "all") {
@@ -92,7 +91,8 @@ const ProductList = () => {
         <option value="stock">Stock</option>
       </select>
 
-      <button>Add Product</button>
+      <Link to="/modal">Add Product</Link>
+
       <div className="product-list">
         <div className="product-row product-header">
           <div>ID</div>
@@ -123,7 +123,7 @@ const ProductList = () => {
               <p>Department: {department}</p>
               <h3>{name}</h3>
               <p>Description: {description}</p>
-              <p>Price: ${price.toFixed(2)}</p>
+              <p>Price: ${price}</p>
               <p>Stock: {stock}</p>
               <p>SKU: {sku}</p>
               <p>Supplier: {supplier}</p>

@@ -13,7 +13,7 @@ function App() {
       <NavLink to='/' className='links'>Dashboard</NavLink>
       <NavLink to='/department' className='links'>Department</NavLink>
       <NavLink to='/product/all' className='links'>Product</NavLink>
-      <NavLink to='/modal' className='links'>Add Product</NavLink>
+      {/* <NavLink to='/modal' className='links'>Add Product</NavLink> */}
       </div>
       
       <Routes>
