@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import  Dashboard from './pages/dashboard/Dashboard';
+// import ProductDetails from './pages/ProductDetails';
+import Department from './pages/department/Department';
+import ProductList from './pages/productlist/ProductList';
+import Modal from './components/Modal';
+import {Routes, Route, NavLink } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main-container'>
+      <div className='navlinks-container'>
+      <NavLink to='/' className='links'>Dashboard</NavLink>
+      <NavLink to='/department' className='links'>Department</NavLink>
+      <NavLink to='/product/all' className='links'>Product</NavLink>
+      <NavLink to='/modal' className='links'>Add Product</NavLink>
+      </div>
+      
+      <Routes>
+        <Route path='/' element={<Dashboard/>}/>
+        <Route path='/department' element={<Department/>}/>
+        <Route path='/product/:dept' element={<ProductList/>}/>
+        <Route path='/modal' element={<Modal/>}/>
+      </Routes>
+  {/* <Button variant="contained">Hello World</Button> */}
     </div>
+    
   );
 }
 

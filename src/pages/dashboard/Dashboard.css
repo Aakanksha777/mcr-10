@@ -1,0 +1,14 @@
+.main-dashboard {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.dashboard-card {
+    border: 2px solid orange;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 2em;
+}

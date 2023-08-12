@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.main-container {
+  display: flex;
+}
+
+.navlinks-container {
+  display: flex;
+  flex-direction: column;
+  /* padding-right: 2em; */
+}
+
+.links {
+  text-decoration: none;
+  color: #282c34;
+  font-size: 1rem;
+  border: 2px solid #282c34;
+  margin: 0.5em;
+  padding: 0.5em;
+}

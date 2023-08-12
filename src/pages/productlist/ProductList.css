@@ -1,0 +1,31 @@
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.product-row {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+    border-top: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.product-header {
+    font-weight: bold;
+}
+
+.app {
+    text-align: center;
+}
+
+.product-list>.product-row>div {
+    padding: 5px 10px;
+}
+
+.product-row img {
+    width: 150px;
+}
