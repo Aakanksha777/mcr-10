@@ -43,20 +43,6 @@ const Modal = () => {
     navigate("/product/all");
   };
 
-  // {
-  //   id: 1,
-  //   department: 'Kitchen',
-  //   name: 'Stainless Steel Cookware Set',
-  //   description:
-  //     'A set of high-quality stainless steel cookware including pots and pans.',
-  //   price: 149.99,
-  //   stock: 15,
-  //   sku: 'KITCH001',
-  //   supplier: 'KitchenWonders Inc.',
-  //   delivered: 15,
-  //   imageUrl: 'https://m.media-amazon.com/images/I/616vJsA33kL.jpg',
-  // },
-
   return (
     <form className="modal-box" onSubmit={handleSubmit}>
       <label>
