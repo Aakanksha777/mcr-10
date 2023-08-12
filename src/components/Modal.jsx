@@ -1,18 +1,24 @@
 import React, { useContext, useState } from "react";
 import "./Modal.css";
 import { InventoryContext } from "../context/Inventory";
+import { useNavigate } from "react-router-dom";
 
 const Modal = () => {
   const { inventory, setinventory } = useContext(InventoryContext);
   const [newProduct, setNewProduct] = useState({
-    dept: "",
-    productName: "",
-    desc: "",
-    price: "",
-    stock: "",
+    id: inventory.length,
+    department: "",
+    name: "",
+    description: "",
+    price: 0,
+    stock: 0,
     supplier: "",
-    delivery: "",
+    sku: "",
+    imageUrl: "",
+    delivered: 0,
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
@@ -21,6 +27,20 @@ const Modal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setinventory([...inventory, newProduct]);
+    setNewProduct({
+      id: inventory.length + 1,
+      department: "",
+      name: "",
+      description: "",
+      price: 0,
+      stock: 0,
+      supplier: "",
+      sku: "",
+      imageUrl: "",
+      delivered: 0,
+    });
+    alert("successfully added");
+    navigate("/product/all");
   };
 
   // {
@@ -43,8 +63,8 @@ const Modal = () => {
         Department :{" "}
         <input
           placeholder="Department"
-          value={newProduct.dept}
-          name="dept"
+          value={newProduct.department}
+          name="department"
           onChange={handleChange}
         />
       </label>
@@ -53,8 +73,8 @@ const Modal = () => {
         <input
           placeholder="name"
           onChange={handleChange}
-          value={newProduct.productName}
-          name="productName"
+          value={newProduct.name}
+          name="name"
         />{" "}
       </label>
       <label>
@@ -62,14 +82,15 @@ const Modal = () => {
         <input
           placeholder="Description"
           onChange={handleChange}
-          value={newProduct.desc}
-          name="desc"
+          value={newProduct.description}
+          name="description"
         />{" "}
       </label>
       <label>
         Price
         <input
           placeholder="price"
+          type="number"
           onChange={handleChange}
           value={newProduct.price}
           name="price"
@@ -79,6 +100,7 @@ const Modal = () => {
         Stock
         <input
           placeholder="Stock"
+          type="number"
           onChange={handleChange}
           value={newProduct.stock}
           name="stock"
@@ -91,6 +113,24 @@ const Modal = () => {
           onChange={handleChange}
           value={newProduct.supplier}
           name="supplier"
+        />{" "}
+      </label>
+      <label>
+        Sku :
+        <input
+          placeholder="sku"
+          onChange={handleChange}
+          value={newProduct.sku}
+          name="sku"
+        />{" "}
+      </label>
+      <label>
+        imageUrl :
+        <input
+          placeholder="imageUrl"
+          onChange={handleChange}
+          value={newProduct.imageUrl}
+          name="imageUrl"
         />{" "}
       </label>
 
