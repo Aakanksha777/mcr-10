@@ -3,23 +3,30 @@ import { inventoryData } from "../inventory";
 
 export const InventoryContext = createContext(); //create context
 
+const checkPersistentDataEqualsInital = (initial) => {
+  const inventoryExist = JSON.parse(localStorage.getItem("inventory"));
+  if (!inventoryExist) return initial
+  if (initial.length !== inventoryExist.length) return inventoryExist
+  let flag = true
+  inventoryExist.forEach((per) => {
+    if (!initial.some((ini) => ini.name === per.name)) {
+      flag = false
+    }
+  })
+  return flag ? initial : inventoryExist
+}
+
 export function InventoryProvider({ children }) {
-  const [inventory, setinventory] = useState(inventoryData);
+  const [inventory, setinventory] = useState(checkPersistentDataEqualsInital(inventoryData));
 
   useEffect(() => {
-    inventory &&
+    if (inventory !== inventoryData) {
       localStorage.setItem(
         "inventory",
-        JSON.stringify({ inventory, isNotInitial: true })
+        JSON.stringify(inventory)
       );
-  }, [inventory]);
-
-  useEffect(() => {
-    const inventoryExist = JSON.parse(localStorage.getItem("inventory"));
-    if (inventoryExist && inventoryExist.isNotInitial) {
-      setinventory(inventoryExist.inventory);
     }
-  }, []);
+  }, [inventory]);
 
   return (
     <InventoryContext.Provider value={{ inventory, setinventory }}>

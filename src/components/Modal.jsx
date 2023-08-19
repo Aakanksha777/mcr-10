@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Modal = () => {
   const { inventory, setinventory } = useContext(InventoryContext);
   const [newProduct, setNewProduct] = useState({
-    id: inventory.length,
+    id: inventory.length + 1,
     department: "",
     name: "",
     description: "",
@@ -28,7 +28,7 @@ const Modal = () => {
     e.preventDefault();
     setinventory([...inventory, newProduct]);
     setNewProduct({
-      id: inventory.length + 1,
+      id: "",
       department: "",
       name: "",
       description: "",
